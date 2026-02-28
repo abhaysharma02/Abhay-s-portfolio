@@ -25,11 +25,15 @@ body {
   }
 
   .text-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-br from-white via-neutral-300 to-neutral-600;
+    @apply bg-clip-text text-transparent bg-gradient-to-br from-orange-300 via-orange-500 to-red-600;
+  }
+
+  .text-gradient-subtle {
+    @apply bg-clip-text text-transparent bg-gradient-to-br from-white via-neutral-300 to-neutral-500;
   }
 
   .apple-glow {
-    @apply relative before:absolute before:inset-0 before:-z-10 before:translate-y-2 before:scale-[0.8] before:blur-[60px] before:opacity-30 before:bg-white/50 before:transition-opacity before:duration-700 hover:before:opacity-60;
+    @apply relative before:absolute before:inset-0 before:-z-10 before:translate-y-2 before:scale-[0.8] before:blur-[60px] before:opacity-30 before:bg-orange-600/50 before:transition-opacity before:duration-700 hover:before:opacity-60;
   }
 
   .bg-grid-white {

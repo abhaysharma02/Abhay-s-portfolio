@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Space_Grotesk } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
+const spaceGrotesk = Space_Grotesk({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Abhay Kumar Sharma | Full Stack Developer",
@@ -16,7 +16,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark scroll-smooth">
-      <body className={`${inter.className} bg-black text-neutral-50 antialiased min-h-screen selection:bg-white/10 selection:text-white flex flex-col`}>
+      <body className={`${spaceGrotesk.className} bg-black text-neutral-50 antialiased min-h-screen selection:bg-white/10 selection:text-white flex flex-col`}>
         <div className="fixed inset-0 z-50 bg-noise mix-blend-overlay pointer-events-none" />
         {children}
       </body>

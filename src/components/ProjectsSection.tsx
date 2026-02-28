@@ -27,7 +27,7 @@ const projects = [
         link: "https://eventnest.club",
         github: "#",
         tags: ["Next.js", "React", "Node.js", "MongoDB"],
-        gradient: "from-blue-500/20 to-purple-500/20",
+        preview: "https://image.thum.io/get/width/800/crop/1000/https://eventnest.club",
         status: "Live",
         statusColor: "text-emerald-400 bg-emerald-400/10 border-emerald-400/20"
     },
@@ -37,7 +37,7 @@ const projects = [
         link: "https://nestely.in",
         github: "#",
         tags: ["React", "Spring Boot", "MySQL", "Tailwind"],
-        gradient: "from-orange-500/20 to-red-500/20",
+        preview: "https://image.thum.io/get/width/800/crop/1000/https://nestely.in",
         status: "Live",
         statusColor: "text-emerald-400 bg-emerald-400/10 border-emerald-400/20"
     },
@@ -47,7 +47,7 @@ const projects = [
         link: "#",
         github: "#",
         tags: ["Java", "Spring Boot", "REST API"],
-        gradient: "from-emerald-500/20 to-teal-500/20",
+        preview: "https://image.thum.io/get/width/800/crop/1000/https://tailwindcss.com", // Placeholder
         status: "Building",
         statusColor: "text-blue-400 bg-blue-400/10 border-blue-400/20"
     },
@@ -57,7 +57,7 @@ const projects = [
         link: "#",
         github: "#",
         tags: ["Next.js", "Tailwind CSS", "UI/UX"],
-        gradient: "from-indigo-500/20 to-blue-500/20",
+        preview: "https://image.thum.io/get/width/800/crop/1000/https://nextjs.org", // Placeholder
         status: "Building",
         statusColor: "text-blue-400 bg-blue-400/10 border-blue-400/20"
     }
@@ -93,19 +93,24 @@ export default function ProjectsSection() {
                         >
                             <div className="absolute inset-0 bg-gradient-to-b from-white/[0.02] to-transparent pointer-events-none" />
 
-                            {/* Image Placeholder */}
-                            <div className={`h-80 w-full bg-gradient-to-br ${project.gradient} relative overflow-hidden flex items-center justify-center p-6 border-b border-white/[0.05]`}>
-                                <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors duration-500" />
+                            {/* Image Thumbnail Preview */}
+                            <div className="h-80 w-full relative overflow-hidden flex items-center justify-center border-b border-white/[0.05] bg-neutral-900 shadow-inner">
+                                <img
+                                    src={project.preview}
+                                    alt={`${project.title} preview`}
+                                    className="absolute inset-0 w-full h-full object-cover object-top opacity-60 group-hover:scale-105 group-hover:opacity-80 transition-all duration-700 ease-out"
+                                />
+
+                                {/* Dark Gradient Overlay */}
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent pointer-events-none" />
 
                                 {/* Status Badge */}
                                 <div className="absolute top-6 right-6 z-20">
-                                    <span className={`px-3 py-1 text-xs font-semibold rounded-full border flex items-center gap-1.5 backdrop-blur-md ${project.statusColor}`}>
+                                    <span className={`px-3 py-1 text-xs font-semibold rounded-full border flex items-center gap-1.5 backdrop-blur-md shadow-lg ${project.statusColor}`}>
                                         <span className={`w-1.5 h-1.5 rounded-full ${project.status === 'Live' ? 'bg-emerald-400 animate-pulse' : 'bg-blue-400'}`}></span>
                                         {project.status}
                                     </span>
                                 </div>
-
-                                <span className="text-white/30 font-bold text-5xl tracking-widest uppercase rotate-[-5deg] scale-95 group-hover:scale-105 transition-transform duration-700 ease-out">{project.title.split('.')[0]}</span>
                             </div>
 
                             <div className="p-8 md:p-10 flex flex-col flex-grow relative z-10">

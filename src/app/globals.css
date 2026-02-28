@@ -1,26 +1,89 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-background: #000000;
+  --color-foreground: #ffffff;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+  overflow-x: hidden;
+}
+
+@layer utilities {
+  .glass {
+    @apply bg-black/40 border border-white/5 backdrop-blur-2xl shadow-[inset_0_1px_1px_#ffffff0d];
+  }
+
+  .glass-card {
+    @apply bg-neutral-900/40 border border-white/5 backdrop-blur-3xl rounded-3xl transition-all duration-700 hover:border-white/10 hover:bg-neutral-800/40 shadow-[0_8px_30px_#0000001f] hover:shadow-[0_0_40px_#ffffff0a];
+  }
+
+  .glass-input {
+    @apply w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-white/20 focus:bg-white/10 transition-all duration-300 shadow-[inset_0_1px_2px_#00000033];
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-br from-white via-neutral-300 to-neutral-600;
+  }
+
+  .apple-glow {
+    @apply relative before:absolute before:inset-0 before:-z-10 before:translate-y-2 before:scale-[0.8] before:blur-[60px] before:opacity-30 before:bg-white/50 before:transition-opacity before:duration-700 hover:before:opacity-60;
+  }
+
+  .bg-grid-white {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='32' height='32' fill='none' stroke='%23ffffff05'%3e%3cpath d='M0 .5H31.5V32'/%3e%3c/svg%3e");
+  }
+
+  .bg-noise {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    opacity: 0.04;
+    mix-blend-mode: overlay;
+    pointer-events: none;
+  }
+
+  .animate-blob {
+    animation: blob 15s infinite alternate ease-in-out;
+  }
+
+  .animate-blob-reverse {
+    animation: blob-reverse 20s infinite alternate ease-in-out;
+  }
+}
+
+@keyframes blob {
+  0% {
+    transform: translate(0px, 0px) scale(1);
+  }
+
+  33% {
+    transform: translate(30px, -50px) scale(1.1);
+  }
+
+  66% {
+    transform: translate(-20px, 20px) scale(0.9);
+  }
+
+  100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+}
+
+@keyframes blob-reverse {
+  0% {
+    transform: translate(0px, 0px) scale(1);
+  }
+
+  33% {
+    transform: translate(-30px, 50px) scale(1.2);
+  }
+
+  66% {
+    transform: translate(20px, -20px) scale(0.8);
+  }
+
+  100% {
+    transform: translate(0px, 0px) scale(1);
+  }
 }
